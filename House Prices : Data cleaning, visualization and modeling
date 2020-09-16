@@ -1,0 +1,25 @@
+# Import packages
+import numpy as np
+import pandas as pd 
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+from sklearn.model_selection import train_test_split
+from lightgbm import LGBMRegressor
+from xgboost import XGBRegressor
+import sklearn.metrics as metrics
+import math
+
+sample_submission = pd.read_csv("../input/house-prices-advanced-regression-techniques/sample_submission.csv")
+test = pd.read_csv("../input/house-prices-advanced-regression-techniques/test.csv")
+train = pd.read_csv("../input/house-prices-advanced-regression-techniques/train.csv")
+#Creating a copy of the train and test datasets
+c_test  = test.copy()
+c_train  = train.copy()
+
+c_train.head()
+
+c_test.head()
+
+c_train['train']  = 1
+c_test['train']  = 0
+df = pd.concat([c_train, c_test], axis=0,sort=False)
